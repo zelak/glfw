@@ -78,6 +78,28 @@ project "GLFW"
 			"Dwmapi.lib"
 		}
 
+	filter "system:macosx"
+		pic "On"
+
+		systemversion "latest"
+
+		files
+		{
+			"src/cocoa_init.m",
+			"src/cocoa_window.m",
+			"src/cocoa_monitor.m",
+			"src/cocoa_joystick.m",
+			"src/cocoa_time.c",
+			"src/posix_module.c",
+			"src/posix_thread.c",
+			"src/nsgl_context.m"
+		}
+
+		defines
+		{
+			"_GLFW_COCOA"
+		}
+
 	filter "configurations:Debug"
 		runtime "Debug"
 		symbols "on"
@@ -89,4 +111,12 @@ project "GLFW"
 	filter "configurations:Dist"
 		runtime "Release"
 		optimize "on"
-        symbols "off"
+		symbols "off"
+
+	filter "xcode4"
+		links
+		{
+			"Cocoa.framework",
+			"IOKit.framework",
+			"CoreFoundation.framework",
+		}
