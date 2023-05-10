@@ -268,6 +268,9 @@ void _glfwSetCursorCocoa(_GLFWwindow* window, _GLFWcursor* cursor);
 void _glfwSetClipboardStringCocoa(const char* string);
 const char* _glfwGetClipboardStringCocoa(void);
 
+// Hazel
+void _glfwPlatformSetWindowTitlebar(_GLFWwindow* window, GLFWbool enabled);
+
 EGLenum _glfwGetEGLPlatformCocoa(EGLint** attribs);
 EGLNativeDisplayType _glfwGetEGLNativeDisplayCocoa(void);
 EGLNativeWindowType _glfwGetEGLNativeWindowCocoa(_GLFWwindow* window);
