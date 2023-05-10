@@ -1361,9 +1361,15 @@ void _glfwSetWindowDecoratedCocoa(_GLFWwindow* window, GLFWbool enabled)
 
 void _glfwPlatformSetWindowTitlebar(_GLFWwindow* window, GLFWbool enabled)
 {
-    // TODO
-    _glfwInputError(GLFW_PLATFORM_ERROR,
-        "Cocoa: Window attribute setting not implemented yet");
+    @autoreleasepool {
+        if (enabled) {
+            [window->ns.object titlebarAppearsTransparent:false];
+            [window->ns.object setStyleMask:NSWindowStyleMaskTitled];
+        } else {
+            [window->ns.object titlebarAppearsTransparent:true];
+            [window->ns.object setStyleMask:NSWindowStyleMaskFullSizeContentView];
+        }
+    }
 }
 
 void _glfwPlatformSetWindowFloating(_GLFWwindow* window, GLFWbool enabled)
